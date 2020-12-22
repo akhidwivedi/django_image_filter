@@ -1,0 +1,45 @@
+<!-- navbar -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid mt-3">
+    <div class="row">
+        <!--  filter-->
+        <div class="col-lg-2 mx-auto">
+
+            <div class="list-group">
+                <a href="/index?category={{category.id}}"
+                    class="list-group-item list-group-item-action ">All images</a>
+                {% for category in categories %}
+                <a href="/index?category={{category.id}}"
+                    class="list-group-item list-group-item-action ">{{category.name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- alll Images -->
+        <div id="All_Images" class="col-lg-10 mx-auto">
+            <div class="row">
+                {% for obj in image %}
+                <div class="card mx-auto mb-3" style="width: 18rem;">
+                    <img src="{{obj.picture.url}}" class="card-img-top" alt="Image on card">
+                    <div class="card-body mx-auto">
+                        <p class="card-title">{{obj.title}}</p>
+                        <p class="card-text">{{obj.description}}</p>
+
+                        <a href="#" class="btn btn-light border btn-sm">Add to Cart Image</a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
